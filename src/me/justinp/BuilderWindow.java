@@ -8,6 +8,8 @@ import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
@@ -47,16 +49,22 @@ public class BuilderWindow {
 		//Check for updates.
 		Updater.checkUpdates(shlPermissionBuilder);
 		
-		styledText = new StyledText(shlPermissionBuilder, SWT.BORDER);
+		styledText = new StyledText(shlPermissionBuilder, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
+		styledText.setLeftMargin(5);
+		styledText.setIndent(4);
 		styledText.setEditable(false);
 		styledText.setText("No file open.\r\nTo open one on your computer, goto File > Open\r\nTo open one on a FTP server, goto File > Open from FTP");
-		styledText.setBounds(0, 0, 319, 481);
+		styledText.setBounds(0, 0, 339, 481);
+		
+		Label lblStatus = new Label(shlPermissionBuilder, SWT.NONE);
+		lblStatus.setBounds(10, 487, 747, 15);
+		lblStatus.setText("Status: No file opened.");
 		
 		//Menu bar
 		Menu menu = new Menu(shlPermissionBuilder, SWT.BAR);
 		shlPermissionBuilder.setMenuBar(menu);
 		
-		//The "file" itme in the menu bar
+		//The "file" item in the menu bar
 		MenuItem mntmFile = new MenuItem(menu, SWT.CASCADE);
 		mntmFile.setText("File");
 		
@@ -70,6 +78,7 @@ public class BuilderWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				cmd.FileOpen(shlPermissionBuilder, styledText);
+				
 			}
 		});
 		mntmOpen.setText("Open");
@@ -85,6 +94,10 @@ public class BuilderWindow {
 		//Menu item for save to ftp
 		MenuItem mntmSaveToFtp = new MenuItem(menu_1, SWT.NONE);
 		mntmSaveToFtp.setText("Save to FTP");
+		
+		Group grpEditor = new Group(shlPermissionBuilder, SWT.NONE);
+		grpEditor.setText("Editor");
+		grpEditor.setBounds(347, 10, 410, 471);
 		
 		
 		shlPermissionBuilder.open();
@@ -103,7 +116,7 @@ public class BuilderWindow {
 	 */
 	protected void createContents() {
 		shlPermissionBuilder = new Shell();
-		shlPermissionBuilder.setSize(750, 549);
+		shlPermissionBuilder.setSize(783, 564);
 		shlPermissionBuilder.setText("Permission Builder");
 		
 		cmd = new MenuCommands();
