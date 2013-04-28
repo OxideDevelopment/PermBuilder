@@ -1,4 +1,4 @@
-package me.justinp;
+package me.justinp.dialogs;
 
 import me.justinp.helpers.MenuCommands;
 import me.justinp.update.Updater;
@@ -23,18 +23,6 @@ public class BuilderWindow {
 	//This is so we can access it in the events without making it final.
 	private StyledText styledText;
 
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			BuilderWindow window = new BuilderWindow();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Open the window.
@@ -78,7 +66,6 @@ public class BuilderWindow {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				cmd.FileOpen(shlPermissionBuilder, styledText);
-				
 			}
 		});
 		mntmOpen.setText("Open");
