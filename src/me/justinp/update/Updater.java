@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import org.eclipse.swt.widgets.MessageBox;
+import me.justinp.helpers.Message;
+
 import org.eclipse.swt.widgets.Shell;
 
 public class Updater {
@@ -26,26 +27,21 @@ public class Updater {
 			//Compare the two versions
 			if(!VERSION.equals(latestVersion)) {
 				//Update available
-				messageBox("Update",
+				Message.show("Update",
 						"A new update is available(" + latestVersion + "). Download it from the bukkit thread.",
 						shell);
 			}else {
 				//No new updates
-				messageBox("Pat yourself on your back!", "PermBuilder is up to date.", shell);
+				Message.show("Pat yourself on your back!", "PermBuilder is up to date.", shell);
 			}
 
 
 		} catch (FileNotFoundException exx) {
-			messageBox("Error", "Version.txt file is missing. Update checking halted.", shell);
+			Message.show("Error", "Version.txt file is missing. Update checking halted.", shell);
 		} catch (IOException ex2) {
-			messageBox("Error", "Error while reading Version.txt. Update checking halted.", shell);
+			Message.show("Error", "Error while reading Version.txt. Update checking halted.", shell);
 		}
 	}
 	
-	private static void messageBox(String title, String msg, Shell shell) {
-		MessageBox mb = new MessageBox(shell);
-		mb.setText(title);
-		mb.setMessage(msg);
-		mb.open();
-	}
+
 }
