@@ -1,5 +1,7 @@
 package me.justinp;
 
+import me.justinp.update.Updater;
+
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -30,6 +32,9 @@ public class BuilderWindow {
 		
 		//Loading image manually, since window builder doesn't want to do it..
 		shlPermissionBuilder.setImage(SWTResourceManager.getImage(BuilderWindow.class,"images/icon.png"));
+		
+		//Check for updates.
+		Updater.checkUpdates(shlPermissionBuilder);
 		
 		shlPermissionBuilder.open();
 		shlPermissionBuilder.layout();
