@@ -74,20 +74,24 @@ public class BuilderWindow {
 		});
 		mntmOpen.setText("Open");
 		
+		//Menu item for open from FTP
 		MenuItem mntmOpenFromFtp = new MenuItem(menu_1, SWT.NONE);
 		mntmOpenFromFtp.setText("Open from FTP");
 		
+		//Menu item for save
 		MenuItem mntmSave = new MenuItem(menu_1, SWT.NONE);
 		mntmSave.setText("Save");
 		
+		//Menu item for save to ftp
 		MenuItem mntmSaveToFtp = new MenuItem(menu_1, SWT.NONE);
 		mntmSaveToFtp.setText("Save to FTP");
 		
 		
-		
 		shlPermissionBuilder.open();
 		shlPermissionBuilder.layout();
+		
 		while (!shlPermissionBuilder.isDisposed()) {
+			//Check for events and dispatch them to the proper listeners
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -99,7 +103,6 @@ public class BuilderWindow {
 	 */
 	protected void createContents() {
 		shlPermissionBuilder = new Shell();
-		shlPermissionBuilder.setImage(SWTResourceManager.getImage(BuilderWindow.class, "/me/justinp/images/icon.ico"));
 		shlPermissionBuilder.setSize(750, 549);
 		shlPermissionBuilder.setText("Permission Builder");
 		
