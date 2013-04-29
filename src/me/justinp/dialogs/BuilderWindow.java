@@ -26,13 +26,14 @@ public class BuilderWindow {
 
 	/**
 	 * Open the window.
+	 * @wbp.parser.entryPoint
 	 */
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
 		
 		//Loading image manually, since window builder doesn't want to do it..
-		shlPermissionBuilder.setImage(SWTResourceManager.getImage(BuilderWindow.class,"images/icon.png"));
+		//shlPermissionBuilder.setImage(SWTResourceManager.getImage(BuilderWindow.class,"me/justinp/icons/icon.png"));
 		
 		//Check for updates.
 		Updater.checkUpdates(shlPermissionBuilder);
@@ -72,6 +73,12 @@ public class BuilderWindow {
 		
 		//Menu item for open from FTP
 		MenuItem mntmOpenFromFtp = new MenuItem(menu_1, SWT.NONE);
+		mntmOpenFromFtp.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				new FtpSelection().open();
+			}
+		});
 		mntmOpenFromFtp.setText("Open from FTP");
 		
 		//Menu item for save
@@ -103,6 +110,7 @@ public class BuilderWindow {
 	 */
 	protected void createContents() {
 		shlPermissionBuilder = new Shell();
+		shlPermissionBuilder.setImage(SWTResourceManager.getImage(BuilderWindow.class, "/me/justinp/images/icon.png"));
 		shlPermissionBuilder.setSize(783, 564);
 		shlPermissionBuilder.setText("Permission Builder");
 		
