@@ -14,7 +14,8 @@ public class MenuCommands {
 
 	/**
 	 * Open the file, and dump its contents into editor.
-	 * @param e The event fired.
+	 * @param shell Current shell in use.
+	 * @param editor The StyledText component on the screen.
 	 */
 	public void FileOpen(Shell shell, StyledText editor) {
 		FileDialog dialog = new FileDialog(shell);
